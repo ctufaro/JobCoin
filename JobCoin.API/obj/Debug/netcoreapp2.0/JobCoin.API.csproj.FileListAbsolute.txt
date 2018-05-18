@@ -1,0 +1,11 @@
+C:\Users\ctufaro_admin\My Projects\JobCoin\JobCoin.API\bin\Debug\netcoreapp2.0\JobCoin.API.deps.json
+C:\Users\ctufaro_admin\My Projects\JobCoin\JobCoin.API\bin\Debug\netcoreapp2.0\JobCoin.API.runtimeconfig.json
+C:\Users\ctufaro_admin\My Projects\JobCoin\JobCoin.API\bin\Debug\netcoreapp2.0\JobCoin.API.runtimeconfig.dev.json
+C:\Users\ctufaro_admin\My Projects\JobCoin\JobCoin.API\bin\Debug\netcoreapp2.0\JobCoin.API.dll
+C:\Users\ctufaro_admin\My Projects\JobCoin\JobCoin.API\bin\Debug\netcoreapp2.0\JobCoin.API.pdb
+C:\Users\ctufaro_admin\My Projects\JobCoin\JobCoin.API\obj\Debug\netcoreapp2.0\JobCoin.API.csprojResolveAssemblyReference.cache
+C:\Users\ctufaro_admin\My Projects\JobCoin\JobCoin.API\obj\Debug\netcoreapp2.0\JobCoin.API.csproj.CoreCompileInputs.cache
+C:\Users\ctufaro_admin\My Projects\JobCoin\JobCoin.API\obj\Debug\netcoreapp2.0\JobCoin.API.AssemblyInfoInputs.cache
+C:\Users\ctufaro_admin\My Projects\JobCoin\JobCoin.API\obj\Debug\netcoreapp2.0\JobCoin.API.AssemblyInfo.cs
+C:\Users\ctufaro_admin\My Projects\JobCoin\JobCoin.API\obj\Debug\netcoreapp2.0\JobCoin.API.dll
+C:\Users\ctufaro_admin\My Projects\JobCoin\JobCoin.API\obj\Debug\netcoreapp2.0\JobCoin.API.pdb

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>No Title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet" type="text/css">
+        <link href="css/styles.css" rel="stylesheet" type="text/css">        
+        <body>
+
+            <div class="container">
+    
+                <div class="row">
+    
+                    <div class="col-lg-8 col-lg-offset-2">
+    
+                        <h1>JobCoin Form</h1>
+    
+                        <p class="lead">Please Enter</p>
+    
+    
+                        <form id="jobcoin-form">
+    
+                            <div class="messages"></div>
+    
+                            <div class="controls">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                           
+                                        <div class="form-group">
+                                            <label for="form_addresses">Forward Addresses *</label>
+                                            <textarea id="form_addresses" name="addresses" class="form-control" placeholder="Forward Addresses *" rows="6" required="required" data-error="Please enter at least ONE address."></textarea>
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 btn-send-div">
+                                        <input id="btn-submit" class="btn btn-success btn-send btn-lg" value="Submit">
+                                    </div>
+                                </div>
+                            </div>
+    
+                        </form>
+    
+                    </div><!-- /.8 -->
+    
+                </div> <!-- /.row-->
+    
+            </div> <!-- /.container-->
+            <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+            <script src="js/script.js"></script>
+        </body>
+    </html>
