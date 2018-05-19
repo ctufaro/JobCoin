@@ -7,6 +7,19 @@ h1{
 label {
     color: #333;
 }
+
+ul{
+	font-size:larger;
+}
+
+.logo{
+	width:25%;
+}
+
+.logo-small{
+	width:15%;
+}
+
 .btn-send {
     font-weight: 300;
     text-transform: uppercase;
@@ -16,5 +29,30 @@ label {
 
 .btn-send-div {
     text-align:center !important;
+}
+
+.terms-ftr{
+	margin-top:20px;
+	font-weight:bold;
+}
+
+#err-message{
+	color:red;
+	display:none;
+	margin-left:10px;
+}
+
+#terms-msg{
+	font-weight:bold;
+	font-size:larger;
+}
+
+#deposit-address{
+	text-align:center;
+	border-style:dotted;
+	font-size:x-large;
+	padding: 7px 7px 7px 7px;
+	background-color: AliceBlue;
+	display:none;
 }
 

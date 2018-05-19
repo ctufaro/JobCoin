@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>No Title</title>
+        <title>JobCoin Mixr - Chris Tufaro</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -15,9 +15,9 @@
     
                     <div class="col-lg-8 col-lg-offset-2">
     
-                        <h1>JobCoin Form</h1>
+                        <h1><img class="logo" src="images/logo.jpg"/></h1>
     
-                        <p class="lead">Please Enter</p>
+                        <p class="lead">Enter one or many JobCoin <strong>forward to</strong> addresses in the textbox below.</p>
     
     
                         <form id="jobcoin-form">
@@ -29,13 +29,13 @@
                                     <div class="col-md-12">
                                            
                                         <div class="form-group">
-                                            <label for="form_addresses">Forward Addresses *</label>
-                                            <textarea id="form_addresses" name="addresses" class="form-control" placeholder="Forward Addresses *" rows="6" required="required" data-error="Please enter at least ONE address."></textarea>
+                                            <label for="form_addresses">Forward To Addresses</label><span id="err-message"><small>*please list at least one forward address</small></span>
+                                            <textarea id="form_addresses" name="addresses" class="form-control" placeholder="For multiple addresses, enter each one on a separate line" rows="6" required="required" data-error="Please enter at least ONE address."></textarea>
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-12 btn-send-div">
-                                        <input id="btn-submit" class="btn btn-success btn-send btn-lg" value="Submit">
+                                        <input id="btn-submit" class="btn btn-success btn-send btn-lg" value="Mix 'Em Good!">
                                     </div>
                                 </div>
                             </div>
@@ -47,7 +47,37 @@
                 </div> <!-- /.row-->
     
             </div> <!-- /.container-->
-            <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+            
+			<!-- Modal -->
+			<div id="myModal" class="modal fade" role="dialog">
+			  <div class="modal-dialog">
+
+				<!-- Modal content-->
+				<div class="modal-content">
+				  <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">JobCoin Service Terms</h4>
+				  </div>
+				  <div class="modal-body">
+					<p id="terms-msg">You are submitting <span id="term-msg1"></span>. Please review each bulletpoint below:</p>
+					<ul>
+					  <li>Funds sent to the generated deposit address will be <span id="term-msg2"></span></li>
+					  <li>JobCoin takes a 3% fee for mixing services.</li>
+					  <li>The generated deposit address is good for 24 hours. If funds are not sent before then, this address will be destroyed.</li>
+					</ul>
+					<p class="terms-ftr">If you agree to these terms, click 'Agree' to receive your unique deposit address.</p>
+					<p><div id="deposit-address"></div></p>
+				  </div>
+				  <div class="modal-footer">
+				    <button id="btn-agree" class="btn btn-success">I Agree</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				  </div>
+				</div>
+
+			  </div>
+			</div>
+			
+			<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
             <script src="js/script.js"></script>
         </body>
