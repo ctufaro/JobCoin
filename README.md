@@ -48,11 +48,11 @@ Once the user submits the addresses, they are prompted with the site's Service T
 
 RESTApi/SQL Backend
 -----------
-I leveraged an existing WebAPI/SQL project hosted on Azure. Here is the [link](https://github.com/ctufaro/UGoForAPI) to the project. The REST Api utilizes a SQL Datbase as a backend. Below is a screenshot of the Schema.
+I leveraged an existing WebAPI/SQL project hosted on Azure. Here is the [link](https://github.com/ctufaro/UGoForAPI) to the project. The REST Api utilizes a SQL Database as a backend. Below is a screenshot of the Schema.
 
 ![alt text](https://raw.githubusercontent.com/ctufaro/jobcoin/master/JobCoin.WEB/images/screenshot2.jpg)
 
-The database table is simple, store the user's forward addresses and the generated deposit addresses. Once thing to note is the status field.
+The database table is simple, store the user's forward addresses and the generated deposit addresses. One thing to note is the status field:
 
 * Status 1 - the user has just visited the web page and has generated a deposit address.
 * Status 2 - the user has deposited funds to the generated address, the house and commissions have been paid also.
@@ -70,11 +70,17 @@ JobCoin.CL
 
 Polling
 -----------
-When the polling begins we asynchronously get a list of all deposited addresses (Status = 1) from the database via a REST call. We then poll the [JobCoin network](https://jobcoin.gemini.com/headstone/api) for all transactions. Once we retrieve these two collections, we use LINQ and run a query finding any jobcoins sent to the network. At this point we payout the 3% commission, and send the funds to the house account using the SendToHouseAsync method. We then flags these transactions with a Status equaling 2 in the datbase. Lastly we poll again for transactions with a Status of 2. We then Shuffle/Distribute the funds, see below.
+When the polling begins we asynchronously get a list of all deposited addresses (Status = 1) from the database via a REST call. We then poll the [JobCoin network](https://jobcoin.gemini.com/headstone/api) for all transactions. Once we retrieve these two collections, we use LINQ and run a query finding any jobcoins sent to the network. At this point we payout the 3% commission, and send the funds to the house account using the SendToHouseAsync method. We then flags these transactions with a Status equaling 2 in the database. Lastly we poll again for transactions with a Status of 2. We then Shuffle/Distribute the funds, see below.
 
 Shuffling/Distribution
 -----------
-Transactions queried with a Status of 2 are shuffled using a simple generic Fisher-Yates shuffle. Link can be found [here.](https://www.dotnetperls.com/fisher-yates-shuffle)
+Transactions queried with a Status of 2 are shuffled using a simple generic Fisher-Yates shuffle. Link can be found [here.](https://www.dotnetperls.com/fisher-yates-shuffle) Once shuffled, we then query our database for the payout amounts and the destination addresses. To better thwart analyzers we do the following:
+
+1. Take a single distribution amount and spread this amount over N random integers where the sum of N equals the payout amount. The java implementation can be found [here.](https://stackoverflow.com/questions/22380890/generate-n-random-numbers-whose-sum-is-m-and-all-numbers-should-be-greater-than)
+2. We store the distributions from 1 as a string array. For amounts with decimals, we simply append the decimal amount to a randomly chosen element from the array returned in step 1.
+3. Once we have our array, we then randomly choose a number from 1 - 10. This represents a sleep time for our thread. Once the thread awakens from this random sleep time, the distributions will then be made.
+4. Since we queue all our address distributions on the ThreadPool, concurrency is not guaranteed. This will work in our favor against analyzers.
+
 
 Vulnerabilities
 -----------
