@@ -5,4 +5,8 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\JobCoin.MIXR.CL\JobCoin.MIXR.CL.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -39,11 +39,11 @@ var JobCoin = function () {
 		
 		if(len==1){
 			msg1 = "1 address";
-			msg2= "fully distributed to the supplied address.";
+			msg2= "fully distributed to the supplied address at a random time.";
 		}
 		else{
 			msg1 = len + " addresses";
-			msg2= "divided by " + len + ".";
+			msg2= "divided by " + len + " and distributed at random time intervals.";
 		}
 		$('#myModal').modal('show');
 		$('#term-msg1').html(msg1);
