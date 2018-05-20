@@ -16,7 +16,7 @@ The design
 * **JobCoin.MIXR.CL** - xxx
 * **RESTApi** - xxx
 
-Create a Blockchain in a .NET Core style programming
+Starting the poller is easy
 ```
   var poller = new Poller(production);
   poller.Start(commissionAccount, houseAccount);
@@ -40,7 +40,9 @@ To run: ``` dotnet run ```
 
 Getting Started Guide
 -----------
-[Here](http://ugoforstatic.azurewebsites.net/jobcoin.html) is a self-hosted link to the Web Front-End. The form is simple, fill is one or many multiple addresses you would like your JobCoins to be sent to. 
+[Here](http://ugoforstatic.azurewebsites.net/jobcoin.html) is a self-hosted link to the Web Front-End. The form is simple, fill is one or many multiple addresses you would like your JobCoins to be sent to.
+
+![alt text](https://raw.githubusercontent.com/ctufaro/jobcoin/master/JobCoin.WEB/images/screenshot.jpg) 
 
 Development
 -----------
