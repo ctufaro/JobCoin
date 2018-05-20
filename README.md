@@ -11,10 +11,10 @@ JobCoin is a Bitcoin Mixing/Tumbling implementation in C# on the [.NET Core](htt
 
 The design
 ----------
-* **JobCoin.WEB** - xxx
-* **JobCoin.MIXR**  - xxx
-* **JobCoin.MIXR.CL** - xxx
-* **RESTApi** - xxx
+* **JobCoin.WEB** - no frills, bootstrapped web front-end that calls the REST service.
+* **RESTApi/SQL Backend** - earlier WebAPI project with a SQL backend hosted on Azure.
+* **JobCoin.MIXR**  - the mixing console application.
+* **JobCoin.MIXR.CL** - class library used by the mixing console application.
 
 Starting the poller is easy
 ```
@@ -58,15 +58,29 @@ The database table is simple, store the user's forward addresses and the generat
 * Status 2 - the user has deposited funds to the generated address, the house and commissions have been paid also.
 * Status 3 - the mixer has distributed the funds to the user's forward addresses. At this point we are finished.
 
-There is a lot to do and we welcome contributers developers and testers who want to get some Blockchain experience.
-You can find tasks at the issues/projects or visit our [C# dev](https://stratisplatform.slack.com/messages/csharp_development/) slack channel.
-
-Testing
--------
-* [Testing Guidelines](Documentation/testing-guidelines.md)
-
-Notes
+JobCoin.MIXR
 -----------
+Simple program.cs with a call to the poller in the Main method.
+
+JobCoin.CL
+-----------
+* **Models.cs** - POCO (Plain Old C# Objects) used by the poller.
+* **Utilities.cs** - Shuffle and Random Distribution Methods. See notes below on the Shuffling and Distribution.
+* **Poller.cs**  - the poller runs within a loop, on every iteration of the loop we queue the work onto the ThreadPool using TPL. See notes below on Polling.
+
+Polling
+-----------
+When the polling begins we asynchronously get a list of all deposited addresses (Status = 1) from the database via a REST call. We then poll the [JobCoin network](https://jobcoin.gemini.com/headstone/api) for all transactions. Once we retrieve these two collections, we use LINQ and run a query finding any jobcoins sent to the network. At this point we payout the 3% commission, and send the funds to the house account using the SendToHouseAsync method. We then flags these transactions with a Status equaling 2 in the datbase. Lastly we poll again for transactions with a Status of 2. We then Shuffle/Distribute the funds, see below.
+
+Shuffling/Distribution
+-----------
+Transactions queried with a Status of 2 are shuffled using a simple generic Fisher-Yates shuffle. Link can be found [here.](https://www.dotnetperls.com/fisher-yates-shuffle)
+
+Vulnerabilities
+-----------
+
+
+
 
 
 
