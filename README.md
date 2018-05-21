@@ -79,11 +79,20 @@ Transactions queried with a Status of 2 are shuffled using a simple generic Fish
 1. Take a single distribution amount and spread this amount over N random integers where the sum of N equals the payout amount. The java implementation can be found [here.](https://stackoverflow.com/questions/22380890/generate-n-random-numbers-whose-sum-is-m-and-all-numbers-should-be-greater-than)
 2. We store the distributions from 1 as a string array. For amounts with decimals, we simply append the decimal amount to a randomly chosen element from the array returned in step 1.
 3. Once we have our array, we then randomly choose a number from 1 - 10. This represents a sleep time for our thread. Once the thread awakens from this random sleep time, the distributions will then be made.
-4. Since we queue all our address distributions on the ThreadPool, concurrency is not guaranteed. This will work in our favor against analyzers.
-
+4. Since we queue all our address distributions at random intervals on the ThreadPool, concurrency is not guaranteed. This will work in our favor against analyzers.
 
 Vulnerabilities
 -----------
+* SQL Database to store deposit and forward addresses poses a single point of failure (centralized)
+* Fixed house/commission accounts could draw attention to analyzers.
+* Plain text deposit addresses (generated names) can be viewed by onlookers.
+
+Improvements
+-----------
+* Improve security ariund REST calls
+* Could have architected the project better (more modular, better abstraction, loose coupling)
+* More Unit Tests
+
 
 
 
