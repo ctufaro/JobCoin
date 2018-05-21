@@ -89,7 +89,7 @@ Vulnerabilities
 
 Improvements
 -----------
-* Improve security ariund REST calls
+* Improve security around REST calls
 * Could have architected the project better (more modular, better abstraction, loose coupling)
 * More Unit Tests
 
