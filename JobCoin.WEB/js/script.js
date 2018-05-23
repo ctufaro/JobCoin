@@ -51,7 +51,7 @@ var JobCoin = function () {
 	}
 	
     var Submit = function(addresses){
-		//console.log(addresses);
+		$("#deposit-address").html("<i><small>generating...</small></i>");
 		$.ajax
 		({
 			type: "POST", 
@@ -60,7 +60,7 @@ var JobCoin = function () {
 			data: { "": addresses },
 			dataType: "json",
 			global: false,
-			error: function (xhr, error) { alert(xhr + " - " + error); },
+			error: function (xhr, error) { alert(xhr + " - " + error); $("#deposit-address").html(''); },
 			success: function (data) 
 					{ 
 						$("#form_addresses").val(''); 
